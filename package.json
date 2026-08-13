@@ -1,25 +1,27 @@
 {
-  "name": "cypress_typescript",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cypress-typescript-bdd",
+  "version": "1.1.0",
+  "description": "Cypress + TypeScript + Cucumber BDD against DuckDuckGo",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean:typescript": "rm -rf ./path-to-your-typescript-output-directory",
-    "clean:node_modules": "rm -rf node_modules && npm cache clean --force",
-    "reinstall": "npm run clean:node_modules && npm install",
-    "test:feature": "cypress run --spec 'cypress/integration/path-to-your-feature-file.feature'",
-    "test:headless": "cypress run --headless",
-    "test:parallel": "cypress run --parallel --record --key YOUR_RECORD_KEY"
+    "test": "cypress run --browser chrome --headless",
+    "test:headed": "cypress open",
+    "cypress:run": "cypress run --browser chrome --headless"
   },
-  "keywords": [],
-  "author": "",
+  "author": "GitYourCodeOn",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.2",
-    "@badeball/cypress-cucumber-preprocessor": "latest",
-    "@cypress/webpack-preprocessor": "latest",
-    "ts-loader": "latest",
-    "typescript": "latest" 
+    "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
+    "@cypress/webpack-preprocessor": "^6.0.4",
+    "cypress": "^13.17.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.101.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/step_definitions/**/*.{js,ts}",
+      "cypress/e2e/**/*.{js,ts}"
+    ]
   }
 }
